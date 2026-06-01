@@ -80,7 +80,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
         locationManager = getSystemService(LOCATION_SERVICE) as LocationManager
 
         val btnSelectRadius = findViewById<Button>(R.id.btnSelectRadius)
-        val btnSearch = findViewById<Button>(R.id.btnSearch)
         tvSelectedRadius = findViewById(R.id.tvSelectedRadius)
 
         updateRadiusText()
@@ -89,9 +88,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
             showRadiusSelectionDialog()
         }
 
-        btnSearch.setOnClickListener {
-            searchParkingSpots()
-        }
 
         var mapFragment = supportFragmentManager.findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -205,8 +201,6 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
         } catch (exception: Exception) {
             exception.printStackTrace()
         }
-        val duration = System.currentTimeMillis() - startTime
-        Log.d("TimeToDisplay", "Функция displayParkingSpots() выполняется за $duration мс")
     }
 
     private fun showRadiusSelectionDialog() {
@@ -217,8 +211,10 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
             .setItems(radiusNames) { _, which ->
                 currentRadius = radiusOptions[which].second
                 updateRadiusText()
+
+                searchParkingSpots()
                 Toast.makeText(this,
-                    "Выбран радиус: ${radiusOptions[which].first}. Нажмите \"Найти\"", Toast.LENGTH_SHORT).show()
+                    "Выбран радиус: ${radiusOptions[which].first}.", Toast.LENGTH_SHORT).show()
             }
             .setNegativeButton("Отмена") { dialog, _ ->
                 dialog.dismiss()
