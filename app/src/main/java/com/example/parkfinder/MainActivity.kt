@@ -44,7 +44,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
     private var isFirstLocationUpdate = true
     private var currentUserLocation: Location? = null
 
-    private var currentRadius = 250.0 // радиус по умолчанию 250 метров
+    private var currentRadius = 250.0
     private lateinit var tvSelectedRadius: TextView
 
     private val radiusOptions = listOf(
@@ -143,7 +143,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
 
             displayParkingSpots()
 
-            Toast.makeText(this, "Ваше местоположение определено. Радиус поиска: ${tvSelectedRadius.text}", Toast.LENGTH_LONG).show()
+            Toast.makeText(this, "Ваше местоположение определено. ${tvSelectedRadius.text}", Toast.LENGTH_LONG).show()
         }
     }
 
@@ -242,7 +242,7 @@ class MainActivity : AppCompatActivity(), OnMapReadyCallback, LocationListener {
         }
         displayParkingSpots()
 
-        Toast.makeText(this, "Поиск парковок в радиусе ${tvSelectedRadius.text}", Toast.LENGTH_SHORT).show()
+        //Toast.makeText(this, "Поиск парковок в радиусе ${tvSelectedRadius.text}", Toast.LENGTH_SHORT).show()
     }
 
     private fun calculateDistance(lat1: Double, lon1: Double, lat2: Double, lon2: Double): Double {

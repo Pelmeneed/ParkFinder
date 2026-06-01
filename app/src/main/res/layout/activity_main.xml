@@ -25,10 +25,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
-        android:width="200dp"
+        android:width="260dp"
         android:backgroundTint="#33CCCC	"
-        android:textColor="#03032F"
+        android:textColor="#060640"
         android:padding="12dp"
+        android:textSize="16dp"
         android:text="Выбрать радиус"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="@+id/map"
@@ -47,6 +48,7 @@
         android:padding="8dp"
         android:text="Радиус: 250 м"
         android:textAlignment="center"
+        android:textColor="#424242"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
